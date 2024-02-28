@@ -1,0 +1,230 @@
+{
+  "phone": "Phone",
+  "@phone": {
+    "description": "The current som"
+  },
+  "email": "Email",
+  "@email": {
+    "description": "The current som"
+  },
+  "inProcess": "In Process",
+  "@inProcess": {
+    "description": "The current inProcess"
+  },
+  "ready": "Ready",
+  "@ready": {
+    "description": "The current ready"
+  },
+  "canceled": "Canceled",
+  "@canceled": {
+    "description": "The current canceled"
+  },
+  "byLocation": "By Location",
+  "@byLocation": {
+    "description": "The current byLocation"
+  },
+  "scanOnQr": "Scan On Qr",
+  "@scanOnQr": {
+    "description": "The current scanOnQr"
+  },
+  "continueAsAGuest": "Continue As A Guest",
+  "@continueAsAGuest": {
+    "description": "The current continueAsAGuest"
+  },
+  "signUp": "Sign Up",
+  "@signUp": {
+    "description": "The current signUp"
+  },
+  "comments": "Comments",
+  "@comments": {
+    "description": "The current comments"
+  },
+  "pleaseEnterAName": "Please enter a name",
+  "@pleaseEnterAName": {
+    "description": "The current pleaseEnterAName"
+  },
+  "pleaseEnterADescription": "Please enter a description",
+  "@pleaseEnterADescription": {
+    "description": "The current pleaseEnterADescription"
+  },
+  "pleaseEnterAPrice": "Please enter a price",
+  "@pleaseEnterAPrice": {
+    "description": "The current pleaseEnterAPrice"
+  },
+  "areYouSureYouWantToDeleteTheImage": "Are you sure you want to delete the image?",
+  "@areYouSureYouWantToDeleteTheImage": {
+    "description": "The current areYouSureYouWantToDeleteTheImage"
+  },
+  "update": "Update",
+  "@update": {
+    "description": "The current update"
+  },
+  "attention": "Attention",
+  "@attention": {
+    "description": "The current attention"
+  },
+  "ok": "Ok",
+  "@ok": {
+    "description": "The current ok"
+  },
+  "create": "Create",
+  "@create": {
+    "description": "The current create"
+  },
+  "menu": "Menu",
+  "@menu": {
+    "description": "The current menu"
+  },
+  "profile": "Profile",
+  "@profile": {
+    "description": "The current profile"
+  },
+  "chooseAll": "Choose All",
+  "@chooseAll": {
+    "description": "The current chooseAll"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "The current cancel"
+  },
+  "done": "Done",
+  "@done": {
+    "description": "The current done"
+  },
+  "total": "Total",
+  "@total": {
+    "description": "The current total"
+  },
+  "amountToPay": "Amount To Pay",
+  "@amountToPay": {
+    "description": "The current amountToPay"
+  },
+  "discount": "Discount",
+  "@discount": {
+    "description": "The current discount"
+  },
+  "customerName": "Customer Name",
+  "@customerName": {
+    "description": "The current customerName"
+  },
+  "date": "Date",
+  "@date": {
+    "description": "The current date"
+  },
+  "chat": "Chat",
+  "@chat": {
+    "description": "The current chat"
+  },
+  "time": "Time",
+  "@time": {
+    "description": "The current time"
+  },
+  "deposit": "Deposit",
+  "@deposit": {
+    "description": "The current deposit"
+  },
+  "dateOfEntry": "Date Of Entry",
+  "@dateOfEntry": {
+    "description": "The current dateOfEntry"
+  },
+  "status": "Status",
+  "@status": {
+    "description": "The current status"
+  },
+  "save": "Save",
+  "@save": {
+    "description": "The current save"
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "The current delete"
+  },
+  "yes": "Yes",
+  "@yes": {
+    "description": "The current yes"
+  },
+  "no": "No",
+  "@no": {
+    "description": "The current no"
+  },
+  "search": "Search",
+  "@search": {
+    "description": "The current search"
+  },
+  "edit": "Edit",
+  "@edit": {
+    "description": "The current edit"
+  },
+  "description": "Description",
+  "@description": {
+    "description": "The current description"
+  },
+  "price": "Price",
+  "@price": {
+    "description": "The current price"
+  },
+  "addImage": "Add Image",
+  "@addImage": {
+    "description": "The current addImage"
+  },
+  "add": "Add",
+  "@add": {
+    "description": "The current add"
+  },
+  "place": "Place",
+  "@place": {
+    "description": "The current place"
+  },
+  "login": "Login",
+  "@login": {
+    "description": "The current login"
+  },
+  "language": "English",
+  "@language": {
+    "description": "The current language"
+  },
+  "settings": "Settings",
+  "@settings": {
+    "description": "The current settings"
+  },
+  "password": "Password",
+  "@password": {
+    "description": "The current password"
+  },
+  "name": "Name",
+  "@name": {
+    "description": "The current name"
+  },
+  "theme": "Theme",
+  "@theme": {
+    "description": "The current theme"
+  },
+  "darkTheme": "Dark",
+  "@darkTheme": {
+    "description": "The current darkTheme"
+  },
+  "lightTheme": "Light",
+  "@lightTheme": {
+    "description": "The current lightTheme"
+  },
+  "languagesWord": "Languages",
+  "@languagesWord": {
+    "description": "The current languagesWord"
+  },
+  "notifications": "Notifications",
+  "@notifications": {
+    "description": "The current notifications"
+  },
+  "signIn": "Sign In",
+  "@signIn": {
+    "description": "The current signIn"
+  },
+  "paid": "Paid",
+  "@paid": {
+    "description": "The current paid"
+  },
+  "notPaid": "Not Paid",
+  "@notPaid": {
+    "description": "The current not paid"
+  }
+}
