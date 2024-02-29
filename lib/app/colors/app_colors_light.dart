@@ -9,6 +9,8 @@ class AppColorsLight implements AppColors {
 
   @override
   Color get black40 => Colors.black38;
+  @override
+  Color get scaffoldBackground => Colors.white;
 
   @override
   Color get grey => Colors.grey;
@@ -17,28 +19,31 @@ class AppColorsLight implements AppColors {
   Color get gray10 => Colors.grey.shade900;
 
   @override
-  Color get gray20 => Colors.grey.shade800;
+  Color get gray20 => Color(0xFF4C6D86);
+
+  @override
+  Color get gradationGrey => Color(0xFF4C6D86);
 
   @override
   Color get gray40 => Colors.grey.shade600;
 
   @override
-  Color get gray60 => Colors.grey.shade400;
+  Color get gray60 => Color(0xFFE0E9F3);
 
   @override
-  Color get gray80 => Colors.grey.shade200;
+  Color get gray80 => Color(0xFFF2F6F9);
 
   @override
-  Color get primaryBlue => Colors.blue;
+  Color get primaryBlue => Color(0xFF326BD8);
 
   @override
   Color get primaryGreen => Color(0xFF126B60);
 
   @override
-  Color get primaryRed => Colors.red;
+  Color get primaryRed => Color(0xFFFF001F);
 
   @override
-  Color get primaryYellow => Colors.yellow;
+  Color get primaryYellow => Color(0xFFFFC531);
 
   @override
   Color get secondaryGreen => Color(0xFF40B0A3);

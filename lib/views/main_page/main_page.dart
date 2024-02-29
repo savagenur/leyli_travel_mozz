@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
+import 'package:leyli_travel_mozz/views/main_page/my_tour/my_tour_page.dart';
+import 'package:leyli_travel_mozz/views/main_page/notification/notification_page.dart';
+import 'package:leyli_travel_mozz/views/main_page/profile/profile_page.dart';
 import 'package:leyli_travel_mozz/views/main_page/search_tour/search_tour_page.dart';
 
 class MainPage extends StatefulWidget {
@@ -12,9 +15,9 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
   List<Widget> pages = [
     SearchTourPage(),
-    Container(),
-    Container(),
-    Container(),
+    MyTourPage(),
+    NotificationPage(),
+    ProfilePage(),
   ];
   int _currentIndex = 0;
   @override

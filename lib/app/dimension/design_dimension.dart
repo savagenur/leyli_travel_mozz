@@ -37,6 +37,7 @@ class DDimens {
   static const double smallRadius = 5;
   static const double mediumRadius = 8;
   static const double bigRadius = 10;
+  static const double biggerRadius = 16;
   static const double largeRadius = 25;
   static const double hugeRadius = 35;
   static const double circleRadius = 200;
@@ -71,6 +72,8 @@ class DDimens {
 
   // Search Tour Page
   static const double searchTourTabBarHeight = 56;
+  // Tour Detail Page
+  static const double detailTourTabBarHeight = 50;
 }
 
 extension ToEdgeInsets on double {

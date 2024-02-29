@@ -9,12 +9,15 @@ abstract class AppColors {
   Color get primaryBlue;
   Color get primaryRed;
 
+  Color get scaffoldBackground;
+
   Color get grey;
   Color get gray80;
   Color get gray60;
   Color get gray40;
   Color get gray20;
   Color get gray10;
+  Color get gradationGrey;
 
   Color get white;
   Color get black;

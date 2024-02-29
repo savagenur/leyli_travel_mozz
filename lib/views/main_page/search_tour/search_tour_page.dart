@@ -460,7 +460,7 @@ class SearchTourPageState extends State<SearchTourPage> {
                   ),
                   Text(
                     "213 434",
-                    style: context.textTheme.bodySmallMoreMinus!.copyWith(
+                    style: context.textTheme.bodySmallMinus!.copyWith(
                       color: context.colors.black,
                     ),
                   ),
@@ -485,7 +485,7 @@ class SearchTourPageState extends State<SearchTourPage> {
                   ),
                   Text(
                     "213 434",
-                    style: context.textTheme.bodySmallMoreMinus!
+                    style: context.textTheme.bodySmallMinus!
                         .copyWith(color: context.colors.white, height: 0),
                   ),
                 ],
@@ -501,7 +501,7 @@ class SearchTourPageState extends State<SearchTourPage> {
               ),
               Text(
                 "213 434",
-                style: context.textTheme.bodySmallMoreMinus!,
+                style: context.textTheme.bodySmallMinus!,
               ),
             ],
           );
