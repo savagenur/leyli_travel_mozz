@@ -41,7 +41,7 @@ class TourInfoPageState extends State<TourInfoPage> {
                   Text(
                     "Rixos Bab Al Barh 5*",
                     style: context.textTheme.titleMediumPlus!.copyWith(
-                      fontFamily: gilroyBold,
+                      fontFamily: semiBold,
                     ),
                   ),
                   const Divider(),
@@ -51,7 +51,7 @@ class TourInfoPageState extends State<TourInfoPage> {
                   Text(
                     "Туристам",
                     style: context.textTheme.titleMedium!.copyWith(
-                      fontFamily: gilroyBold,
+                      fontFamily: semiBold,
                     ),
                   ),
                   DDimens.mediumPadding.verticalBox,
@@ -115,7 +115,7 @@ class TourInfoPageState extends State<TourInfoPage> {
         Text(
           "LEYELI\nРекомендует",
           style: TextStyle(
-            fontFamily: gilroyBold,
+            fontFamily: semiBold,
           ),
         ),
       ],
@@ -137,7 +137,7 @@ class TourInfoPageState extends State<TourInfoPage> {
           Text(
             "Питание",
             style: context.textTheme.bodySmall!.copyWith(
-              fontFamily: gilroyBold,
+              fontFamily: semiBold,
             ),
           ),
           Text(
@@ -165,7 +165,7 @@ class TourInfoPageState extends State<TourInfoPage> {
           Text(
             "+ ещё 10",
             style: context.textTheme.bodySmall!.copyWith(
-              fontFamily: gilroyBold,
+              fontFamily: semiBold,
             ),
           ),
         ],
@@ -223,7 +223,7 @@ class TourInfoPageState extends State<TourInfoPage> {
           child: Text(
             title,
             style: context.textTheme.titleSmall!.copyWith(
-              fontFamily: gilroyBold,
+              fontFamily: semiBold,
               color: isSelected ? context.colors.black : context.colors.gray20,
               fontSize: 12,
             ),
@@ -246,7 +246,7 @@ class TourInfoPageState extends State<TourInfoPage> {
                   "Турция, Анталия",
                   style: context.textTheme.bodyLarge!.copyWith(
                     color: context.colors.gray20,
-                    fontFamily: gilroyBold,
+                    fontFamily: semiBold,
                   ),
                 ),
                 DDimens.smallPadding.verticalBox,
@@ -282,7 +282,7 @@ class TourInfoPageState extends State<TourInfoPage> {
                     "Booking.com",
                     textAlign: TextAlign.center,
                     style: context.textTheme.titleMediumPlus!.copyWith(
-                      fontFamily: gilroyBold,
+                      fontFamily: semiBold,
                     ),
                   ),
                   Container(
@@ -298,7 +298,7 @@ class TourInfoPageState extends State<TourInfoPage> {
                       "4.6",
                       style: TextStyle(
                         color: context.colors.white,
-                        fontFamily: gilroyBold,
+                        fontFamily: semiBold,
                       ),
                     ),
                   )
@@ -383,5 +383,3 @@ class TourInfoPageState extends State<TourInfoPage> {
     );
   }
 }
-
-

@@ -12,6 +12,7 @@ import 'package:leyli_travel_mozz/views/main_page/search_tour/search_tour_page.d
 import 'package:leyli_travel_mozz/views/tour_detail/tour_detail_page.dart';
 import 'package:leyli_travel_mozz/views/tour_info/tour_info_page.dart';
 import 'package:leyli_travel_mozz/views/tour_list/tour_list_page.dart';
+import 'package:leyli_travel_mozz/views/tour_registration/tour_registration_page.dart';
 
 class LeyliTravelApp extends StatelessWidget {
   const LeyliTravelApp({super.key});
@@ -30,7 +31,7 @@ class LeyliTravelApp extends StatelessWidget {
       ],
       supportedLocales: L10n.all,
       locale: const Locale("ru"),
-      home: TourDetailPage(),
+      home: TourRegistrationPage(),
     );
   }
 

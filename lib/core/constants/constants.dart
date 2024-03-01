@@ -1,1 +1,1 @@
-const String gilroyBold = "GilroyBold";
+const String semiBold = "GilroyBold";

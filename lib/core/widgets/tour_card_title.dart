@@ -10,7 +10,6 @@ class TourCardTitle extends StatelessWidget {
     super.key,
   });
 
-
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -21,10 +20,9 @@ class TourCardTitle extends StatelessWidget {
         DDimens.smallPadding.verticalBox,
         Text(
           "Rixos Bab Al Barh 5*",
-          style: context.textTheme.titleMediumPlus!
-              .copyWith(
-                fontFamily: gilroyBold,
-              ),
+          style: context.textTheme.titleMediumPlus!.copyWith(
+            fontFamily: semiBold,
+          ),
         ),
         Text(
           "Турция, Анталия",

@@ -3,7 +3,7 @@ import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
 import 'package:leyli_travel_mozz/core/widgets/appbar/adaptive_app_bar.dart';
-import 'package:leyli_travel_mozz/core/widgets/primary_colored_box.dart';
+import 'package:leyli_travel_mozz/core/widgets/colored_box/small_colored_box.dart';
 import 'package:leyli_travel_mozz/core/widgets/primary_image_text.dart';
 
 class MyTourPage extends StatelessWidget {
@@ -46,7 +46,7 @@ class MyTourPage extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  PrimaryColoredBox(
+                  SmallColoredBox(
                     backgroundColor: context.colors.primaryRed,
                     child: Text(
                       "-18%",
@@ -90,7 +90,7 @@ class MyTourPage extends StatelessWidget {
                     ),
                   ),
                   DDimens.bigPadding.horizontalBox,
-                  PrimaryColoredBox(
+                  SmallColoredBox(
                     child: Text.rich(
                       TextSpan(text: "70 045 ₸ ", children: [
                         TextSpan(

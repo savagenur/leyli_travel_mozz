@@ -7,7 +7,8 @@ import 'package:leyli_travel_mozz/core/mocks/images.dart';
 import 'package:leyli_travel_mozz/core/widgets/appbar/adaptive_app_bar.dart';
 import 'package:leyli_travel_mozz/core/widgets/button/primary_button.dart';
 import 'package:leyli_travel_mozz/core/widgets/flight_tile.dart';
-import 'package:leyli_travel_mozz/core/widgets/primary_colored_box.dart';
+import 'package:leyli_travel_mozz/core/widgets/colored_box/main_colored_box.dart';
+import 'package:leyli_travel_mozz/core/widgets/colored_box/small_colored_box.dart';
 import 'package:leyli_travel_mozz/core/widgets/rating_stars.dart';
 import 'package:leyli_travel_mozz/core/widgets/tour_card_title.dart';
 
@@ -32,47 +33,9 @@ class TourDetailPage extends StatelessWidget {
         padding: DDimens.biggerPadding.all,
         child: Column(
           children: [
-            buildColoredBox(
-              context,
-              isBorder: false,
-              padding: DDimens.bigPadding.all,
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CircleAvatar(
-                    radius: 45,
-                    foregroundImage: AssetImage(
-                      kImages[0],
-                    ),
-                  ),
-                  DDimens.bigPadding.horizontalBox,
-                  TourCardTitle(),
-                ],
-              ),
-            ),
+            buildHotel(context),
             DDimens.biggerPadding.verticalBox,
-            buildColoredBox(
-              context,
-              child: Column(
-                children: [
-                  DDimens.bigPadding.verticalBox,
-                  buildListItem(
-                    context,
-                    iconData: Icons.people_outline,
-                    title: "Люди",
-                    subtitle: "2 взрослых",
-                  ),
-                  const Divider(),
-                  buildListItem(
-                    context,
-                    iconData: Icons.calendar_month_outlined,
-                    title: "Сроки",
-                    subtitle: "с 19 янв. по 26 янв., 7 ночей",
-                  ),
-                  DDimens.bigPadding.verticalBox,
-                ],
-              ),
-            ),
+            buildPassengerDate(context),
             DDimens.biggerPadding.verticalBox,
             buildPriceCard(context),
             DDimens.biggerPadding.verticalBox,
@@ -90,6 +53,52 @@ class TourDetailPage extends StatelessWidget {
             DDimens.doubleHugePadding.verticalBox,
           ],
         ),
+      ),
+    );
+  }
+
+  Widget buildHotel(BuildContext context) {
+    return buildColoredBox(
+      context,
+      isBorder: false,
+      padding: DDimens.bigPadding.all,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 45,
+            foregroundImage: AssetImage(
+              kImages[0],
+            ),
+          ),
+          DDimens.bigPadding.horizontalBox,
+          TourCardTitle(),
+        ],
+      ),
+    );
+  }
+
+  Widget buildPassengerDate(BuildContext context) {
+    return buildColoredBox(
+      context,
+      child: Column(
+        children: [
+          DDimens.bigPadding.verticalBox,
+          buildListItem(
+            context,
+            iconData: Icons.people_outline,
+            title: "Люди",
+            subtitle: "2 взрослых",
+          ),
+          const Divider(),
+          buildListItem(
+            context,
+            iconData: Icons.calendar_month_outlined,
+            title: "Сроки",
+            subtitle: "с 19 янв. по 26 янв., 7 ночей",
+          ),
+          DDimens.bigPadding.verticalBox,
+        ],
       ),
     );
   }
@@ -258,12 +267,12 @@ class TourDetailPage extends StatelessWidget {
                     Text(
                       "1 895 061 ₸",
                       style: context.textTheme.titleLarge!.copyWith(
-                        fontFamily: gilroyBold,
+                        fontFamily: semiBold,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                     DDimens.smallPadding.verticalBox,
-                    PrimaryColoredBox(
+                    SmallColoredBox(
                       child: Text.rich(
                         TextSpan(text: "70 045 ₸ ", children: [
                           TextSpan(
@@ -279,12 +288,12 @@ class TourDetailPage extends StatelessWidget {
                     )
                   ],
                 ),
-                PrimaryColoredBox(
+                SmallColoredBox(
                   backgroundColor: context.colors.primaryRed,
                   child: Text(
                     "-18%",
                     style: context.textTheme.titleSmall!.copyWith(
-                      fontFamily: gilroyBold,
+                      fontFamily: semiBold,
                       color: context.colors.white,
                     ),
                   ),
@@ -317,7 +326,7 @@ class TourDetailPage extends StatelessWidget {
         title: Text(
           "27 911 тнг.",
           style: context.textTheme.titleMediumPlus!.copyWith(
-            fontFamily: gilroyBold,
+            fontFamily: semiBold,
             fontWeight: FontWeight.bold,
             color: context.colors.primaryGreen,
           ),
@@ -374,17 +383,9 @@ class TourDetailPage extends StatelessWidget {
 
   Widget buildColoredBox(BuildContext context,
       {EdgeInsets? padding, required Widget child, bool isBorder = true}) {
-    return Container(
+    return MainColoredBox(
       padding: padding,
-      decoration: BoxDecoration(
-        borderRadius: DDimens.biggerRadius.radius,
-        color: context.colors.gray80,
-        border: isBorder
-            ? Border.all(
-                color: context.colors.gray60,
-              )
-            : null,
-      ),
+      isBorder: isBorder,
       child: child,
     );
   }

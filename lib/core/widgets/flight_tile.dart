@@ -102,7 +102,7 @@ class FlightTile extends StatelessWidget {
           child: Text(
             AppConverter.fromTimeOfDay(leftTime),
             style: context.textTheme.titleLarge!.copyWith(
-              fontFamily: gilroyBold,
+              fontFamily: semiBold,
             ),
           ),
         ),
@@ -111,7 +111,7 @@ class FlightTile extends StatelessWidget {
             AppConverter.fromTimeOfDay(rightTime),
             textAlign: TextAlign.end,
             style: context.textTheme.titleLarge!.copyWith(
-              fontFamily: gilroyBold,
+              fontFamily: semiBold,
             ),
           ),
         ),
@@ -178,7 +178,7 @@ class FlightTile extends StatelessWidget {
           child: Text(
             leftTownCode,
             style: context.textTheme.titleLarge!.copyWith(
-              fontFamily: gilroyBold,
+              fontFamily: semiBold,
             ),
           ),
         ),
@@ -193,7 +193,7 @@ class FlightTile extends StatelessWidget {
             rightTownCode,
             textAlign: TextAlign.end,
             style: context.textTheme.titleLarge!.copyWith(
-              fontFamily: gilroyBold,
+              fontFamily: semiBold,
             ),
           ),
         ),
@@ -208,7 +208,7 @@ class FlightTile extends StatelessWidget {
     final bool isImage = companyImage != null;
     return ListTile(
       titleTextStyle: context.textTheme.titleMedium!.copyWith(
-        fontFamily: gilroyBold,
+        fontFamily: semiBold,
       ),
       contentPadding: DDimens.bigPadding.horizontal,
       horizontalTitleGap: DDimens.bigPadding,
