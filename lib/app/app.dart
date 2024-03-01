@@ -7,6 +7,7 @@ import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
 import 'package:leyli_travel_mozz/l10n/l10n.dart';
 import 'package:leyli_travel_mozz/views/calendar.dart';
+import 'package:leyli_travel_mozz/views/choose_seat/choose_seat_page.dart';
 import 'package:leyli_travel_mozz/views/main_page/main_page.dart';
 import 'package:leyli_travel_mozz/views/main_page/search_tour/search_tour_page.dart';
 import 'package:leyli_travel_mozz/views/tour_detail/tour_detail_page.dart';
@@ -31,7 +32,7 @@ class LeyliTravelApp extends StatelessWidget {
       ],
       supportedLocales: L10n.all,
       locale: const Locale("ru"),
-      home: TourRegistrationPage(),
+      home: ChooseSeatPage(),
     );
   }
 

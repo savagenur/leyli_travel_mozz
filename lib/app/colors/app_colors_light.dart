@@ -25,7 +25,7 @@ class AppColorsLight implements AppColors {
   Color get gradationGrey => Color(0xFF4C6D86);
 
   @override
-  Color get gray40 => Colors.grey.shade600;
+  Color get gray40 => Color(0xFFC7D7E4);
 
   @override
   Color get gray60 => Color(0xFFE0E9F3);

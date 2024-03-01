@@ -41,7 +41,6 @@ dependencies:
   dio: ^5.4.1
   intl: ^0.18.1
   syncfusion_flutter_calendar: ^24.2.7
-  book_my_seat: ^1.0.1
   calendar_date_picker2: ^0.5.3
   flutter_svg: ^1.1.6
   carousel_slider: ^4.2.1
