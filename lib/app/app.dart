@@ -10,6 +10,7 @@ import 'package:leyli_travel_mozz/views/calendar.dart';
 import 'package:leyli_travel_mozz/views/main_page/main_page.dart';
 import 'package:leyli_travel_mozz/views/main_page/search_tour/search_tour_page.dart';
 import 'package:leyli_travel_mozz/views/tour_detail/tour_detail_page.dart';
+import 'package:leyli_travel_mozz/views/tour_info/tour_info_page.dart';
 import 'package:leyli_travel_mozz/views/tour_list/tour_list_page.dart';
 
 class LeyliTravelApp extends StatelessWidget {
@@ -20,49 +21,7 @@ class LeyliTravelApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
-      theme: ThemeData(
-          fontFamily: "Gilroy",
-          colorScheme: ColorScheme.fromSeed(
-            seedColor: appColorsLight.primaryGreen,
-          ),
-          useMaterial3: true,
-          textTheme: AppTextTheme.lightTextTheme,
-          listTileTheme: ListTileThemeData(
-            contentPadding: DDimens.biggerPadding.horizontal,
-            tileColor: context.colors.gray80,
-            shape: OutlineInputBorder(
-              borderRadius: DDimens.bigRadius.radius,
-              borderSide: BorderSide.none,
-            ),
-          ),
-          inputDecorationTheme: InputDecorationTheme(
-            filled: true,
-            fillColor: appColorsLight.white,
-            contentPadding: EdgeInsets.symmetric(
-              vertical: DDimens.biggerPadding,
-              horizontal: DDimens.largePadding,
-            ),
-            suffixStyle: TextStyle(color: appColorsLight.black),
-            focusedBorder: OutlineInputBorder(
-              borderRadius: DDimens.bigRadius.radius,
-              borderSide: BorderSide(
-                width: 1.5,
-              ),
-              gapPadding: DDimens.smallPadding,
-            ),
-            border: OutlineInputBorder(
-              borderRadius: DDimens.bigRadius.radius,
-              gapPadding: DDimens.smallPadding,
-            ),
-            enabledBorder: OutlineInputBorder(
-              borderRadius: DDimens.bigRadius.radius,
-              borderSide: BorderSide(
-                width: 1,
-                color: appColorsLight.gray20,
-              ),
-              gapPadding: DDimens.smallPadding,
-            ),
-          )),
+      theme: theme(context),
       localizationsDelegates: const [
         AppLocalizations.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -73,5 +32,51 @@ class LeyliTravelApp extends StatelessWidget {
       locale: const Locale("ru"),
       home: TourDetailPage(),
     );
+  }
+
+  ThemeData theme(BuildContext context) {
+    return ThemeData(
+        fontFamily: "Gilroy",
+        colorScheme: ColorScheme.fromSeed(
+          seedColor: appColorsLight.primaryGreen,
+        ),
+        useMaterial3: true,
+        textTheme: AppTextTheme.lightTextTheme,
+        listTileTheme: ListTileThemeData(
+          contentPadding: DDimens.biggerPadding.horizontal,
+          tileColor: context.colors.gray80,
+          shape: OutlineInputBorder(
+            borderRadius: DDimens.bigRadius.radius,
+            borderSide: BorderSide.none,
+          ),
+        ),
+        inputDecorationTheme: InputDecorationTheme(
+          filled: true,
+          fillColor: appColorsLight.white,
+          contentPadding: EdgeInsets.symmetric(
+            vertical: DDimens.biggerPadding,
+            horizontal: DDimens.largePadding,
+          ),
+          suffixStyle: TextStyle(color: appColorsLight.black),
+          focusedBorder: OutlineInputBorder(
+            borderRadius: DDimens.bigRadius.radius,
+            borderSide: BorderSide(
+              width: 1.5,
+            ),
+            gapPadding: DDimens.smallPadding,
+          ),
+          border: OutlineInputBorder(
+            borderRadius: DDimens.bigRadius.radius,
+            gapPadding: DDimens.smallPadding,
+          ),
+          enabledBorder: OutlineInputBorder(
+            borderRadius: DDimens.bigRadius.radius,
+            borderSide: BorderSide(
+              width: 1,
+              color: appColorsLight.gray20,
+            ),
+            gapPadding: DDimens.smallPadding,
+          ),
+        ));
   }
 }

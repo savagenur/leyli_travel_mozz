@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
+import 'package:leyli_travel_mozz/core/widgets/tour_card_title.dart';
 
 class TourCard extends StatefulWidget {
   const TourCard({super.key});
@@ -32,6 +33,7 @@ class _TourCardState extends State<TourCard> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               buildCarouselImg(),
+              DDimens.bigPadding.verticalBox,
               buildTitle(),
               const Divider(),
               buildFooter(),
@@ -75,39 +77,7 @@ class _TourCardState extends State<TourCard> {
   Padding buildTitle() {
     return Padding(
       padding: DDimens.biggerPadding.horizontal,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          DDimens.bigPadding.verticalBox,
-          buildStars(),
-          DDimens.smallPadding.verticalBox,
-          Text(
-            "Rixos Bab Al Barh 5*",
-            style: context.textTheme.titleMediumPlus!
-                .copyWith(fontWeight: FontWeight.w600),
-          ),
-          Text(
-            "Турция, Анталия",
-            style: context.textTheme.bodyLarge!.copyWith(
-              color: context.colors.gray20,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Row buildStars() {
-    return Row(
-      children: List.generate(
-        5,
-        (index) => Icon(
-          Icons.star,
-          size: 15,
-          color:
-              index > 2 ? context.colors.gray60 : context.colors.primaryYellow,
-        ),
-      ),
+      child: TourCardTitle(),
     );
   }
 

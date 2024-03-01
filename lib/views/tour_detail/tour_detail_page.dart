@@ -1,393 +1,391 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
+import 'package:leyli_travel_mozz/core/constants/constants.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
+import 'package:leyli_travel_mozz/core/mocks/images.dart';
+import 'package:leyli_travel_mozz/core/widgets/appbar/adaptive_app_bar.dart';
 import 'package:leyli_travel_mozz/core/widgets/button/primary_button.dart';
+import 'package:leyli_travel_mozz/core/widgets/flight_tile.dart';
+import 'package:leyli_travel_mozz/core/widgets/primary_colored_box.dart';
+import 'package:leyli_travel_mozz/core/widgets/rating_stars.dart';
+import 'package:leyli_travel_mozz/core/widgets/tour_card_title.dart';
 
-enum LikeType {
-  like,
-  dislike;
-}
-
-class TourDetailPage extends StatefulWidget {
+class TourDetailPage extends StatelessWidget {
   const TourDetailPage({super.key});
 
   @override
-  State<TourDetailPage> createState() => TourDetailPageState();
-}
-
-class TourDetailPageState extends State<TourDetailPage> {
-  int _currentImgIndex = 0;
-  List<String> images = ["assets/bg_img.jpeg", "assets/bg2.png"];
-  LikeType _likeType = LikeType.like;
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AdaptiveAppBar(
+        text: "Rixos Bab Al Barh 5*",
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.message_outlined,
+            ),
+          ),
+        ],
+      ),
       body: SingleChildScrollView(
+        padding: DDimens.biggerPadding.all,
         child: Column(
           children: [
-            buildCarouselImg(),
-            Padding(
-              padding: DDimens.biggerPadding.all,
-              child: Column(
+            buildColoredBox(
+              context,
+              isBorder: false,
+              padding: DDimens.bigPadding.all,
+              child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  buildStars(),
-                  DDimens.smallPadding.verticalBox,
-                  Text(
-                    "Rixos Bab Al Barh 5*",
-                    style: context.textTheme.titleMediumPlus!.copyWith(
-                      fontFamily: "GilroyBold",
+                  CircleAvatar(
+                    radius: 45,
+                    foregroundImage: AssetImage(
+                      kImages[0],
                     ),
                   ),
-                  const Divider(),
-                  buildDetail(),
-                  const Divider(),
-                  DDimens.mediumPadding.verticalBox,
-                  Text(
-                    "Туристам",
-                    style: context.textTheme.titleMedium!.copyWith(
-                      fontFamily: "GilroyBold",
-                    ),
-                  ),
-                  DDimens.mediumPadding.verticalBox,
-                  _buildTabBar(),
-                  DDimens.bigPadding.verticalBox,
-                  Wrap(
-                    runSpacing: DDimens.bigPadding,
-                    spacing: DDimens.bigPadding,
-                    children: List.generate(
-                      5,
-                      (index) => buildCommentTitle(),
-                    ),
-                  ),
-                  DDimens.bigPadding.verticalBox,
-                  buildMoreComments(),
-                  DDimens.hugePadding.verticalBox,
-                  buildSuggestion(),
-                  DDimens.hugePadding.verticalBox,
-                  PrimaryButton(
-                    margin: DDimens.hugePadding.horizontal,
-                    text: "Подать заявку",
-                    onTap: () {},
-                  ),
+                  DDimens.bigPadding.horizontalBox,
+                  TourCardTitle(),
                 ],
               ),
             ),
-            DDimens.doubleLargePadding.verticalBox,
+            DDimens.biggerPadding.verticalBox,
+            buildColoredBox(
+              context,
+              child: Column(
+                children: [
+                  DDimens.bigPadding.verticalBox,
+                  buildListItem(
+                    context,
+                    iconData: Icons.people_outline,
+                    title: "Люди",
+                    subtitle: "2 взрослых",
+                  ),
+                  const Divider(),
+                  buildListItem(
+                    context,
+                    iconData: Icons.calendar_month_outlined,
+                    title: "Сроки",
+                    subtitle: "с 19 янв. по 26 янв., 7 ночей",
+                  ),
+                  DDimens.bigPadding.verticalBox,
+                ],
+              ),
+            ),
+            DDimens.biggerPadding.verticalBox,
+            buildPriceCard(context),
+            DDimens.biggerPadding.verticalBox,
+            buildChooseRoom(context),
+            DDimens.biggerPadding.verticalBox,
+            buildServices(context),
+            DDimens.biggerPadding.verticalBox,
+            buildFlight(context),
+            DDimens.hugePadding.verticalBox,
+            PrimaryButton(
+              margin: DDimens.largePadding.horizontal,
+              text: "Формить тур (1 642 846 тнг.)",
+              onTap: () {},
+            ),
+            DDimens.doubleHugePadding.verticalBox,
           ],
         ),
       ),
     );
   }
 
-  Padding buildSuggestion() {
-    return Padding(
-      padding: DDimens.bigPadding.horizontal,
+  Widget buildFlight(BuildContext context) {
+    return buildColoredBox(
+      context,
       child: Column(
         children: [
-          buildSuggestionTitle(),
-          DDimens.mediumPadding.verticalBox,
-          Text(
-            "Семейный отель, работающий на ультра все включено: алкоголь входит. Ежедневно проводятся шоу-программы.",
-            style: context.textTheme.bodySmall,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Row buildSuggestionTitle() {
-    return Row(
-      children: [
-        CircleAvatar(
-          backgroundColor: context.colors.primaryGreen,
-          radius: 30,
-          child: SvgPicture.asset(
-            "assets/svg/Union.svg",
-          ),
-        ),
-        DDimens.bigPadding.horizontalBox,
-        Text(
-          "LEYELI\nРекомендует",
-          style: TextStyle(
-            fontFamily: "GilroyBold",
-          ),
-        ),
-      ],
-    );
-  }
-
-  Container buildCommentTitle() {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: DDimens.bigPadding,
-        horizontal: DDimens.hugePadding,
-      ),
-      decoration: BoxDecoration(
-        color: context.colors.gray80,
-        borderRadius: DDimens.bigRadius.radius,
-      ),
-      child: Column(
-        children: [
-          Text(
-            "Питание",
-            style: context.textTheme.bodySmall!.copyWith(
-              fontFamily: "GilroyBold",
-            ),
-          ),
-          Text(
-            "209",
-            style: context.textTheme.bodySmall!
-                .copyWith(color: context.colors.gray20),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget buildMoreComments() {
-    return Container(
-      padding: const EdgeInsets.symmetric(
-        vertical: DDimens.biggerPadding,
-        horizontal: DDimens.hugePadding,
-      ),
-      decoration: BoxDecoration(
-        color: context.colors.gray60,
-        borderRadius: DDimens.bigRadius.radius,
-      ),
-      child: Column(
-        children: [
-          Text(
-            "+ ещё 10",
-            style: context.textTheme.bodySmall!.copyWith(
-              fontFamily: "GilroyBold",
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildTabBar() {
-    return Container(
-      height: DDimens.detailTourTabBarHeight,
-      padding: DDimens.smallPadding.all,
-      decoration: BoxDecoration(
-        borderRadius: DDimens.bigRadius.radius,
-        color: context.colors.gray60,
-      ),
-      child: Row(
-        children: [
-          _buildTab(
-            title: "Нравится",
-            onTap: () {
-              setState(() {
-                _likeType = LikeType.like;
-              });
-            },
-            isSelected: _likeType == LikeType.like,
-          ),
-          _buildTab(
-            title: "Не нравится",
-            onTap: () {
-              setState(() {
-                _likeType = LikeType.dislike;
-              });
-            },
-            isSelected: _likeType == LikeType.dislike,
-          ),
-        ],
-      ),
-    );
-  }
-
-  Expanded _buildTab(
-      {required String title,
-      required VoidCallback onTap,
-      required bool isSelected}) {
-    return Expanded(
-      child: GestureDetector(
-        onTap: onTap,
-        child: Container(
-          height: double.infinity,
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            borderRadius: DDimens.bigRadius.radius,
-            color: isSelected ? context.colors.white : Colors.transparent,
-          ),
-          child: Text(
-            title,
-            style: context.textTheme.titleSmall!.copyWith(
-              fontFamily: "GilroyBold",
-              color: isSelected ? context.colors.black : context.colors.gray20,
-              fontSize: 12,
-            ),
-          ),
-        ),
-      ),
-    );
-  }
-
-  Widget buildDetail() {
-    return IntrinsicHeight(
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
+          DDimens.bigPadding.verticalBox,
+          Padding(
+            padding: DDimens.bigPadding.horizontal,
+            child: Row(
               children: [
-                Text(
-                  "Турция, Анталия",
-                  style: context.textTheme.bodyLarge!.copyWith(
-                    color: context.colors.gray20,
-                    fontFamily: "GilroyBold",
+                Icon(
+                  Icons.airplanemode_active_outlined,
+                  color: context.colors.gray20,
+                ),
+                DDimens.bigPadding.horizontalBox,
+                Expanded(
+                  child: Text(
+                    "Перелет",
+                    textAlign: TextAlign.center,
                   ),
                 ),
-                DDimens.smallPadding.verticalBox,
-                Row(
-                  children: [
-                    Icon(
-                      Icons.location_on_outlined,
-                      color: context.colors.primaryBlue,
-                    ),
-                    Text(
-                      "На карте",
-                      style: context.textTheme.bodyMedium!.copyWith(
-                        color: context.colors.primaryBlue,
-                      ),
-                    ),
-                  ],
+                PrimaryButton(
+                  text: "Выбрать рейс",
+                  textStyle: context.textTheme.bodySmall,
+                  edgeInsets: DDimens.biggerPadding.horizontal,
+                  onTap: () {},
                 ),
               ],
             ),
           ),
-          const VerticalDivider(
-            color: Colors.black,
-            width: DDimens.bigPadding,
-            thickness: .5,
-          ),
-          Expanded(
-            child: Align(
-              alignment: Alignment.center,
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Booking.com",
-                    textAlign: TextAlign.center,
-                    style: context.textTheme.titleMediumPlus!.copyWith(
-                      fontFamily: "GilroyBold",
-                    ),
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: DDimens.biggerPadding,
-                      vertical: DDimens.smallPadding,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: DDimens.largeRadius.radius,
-                      color: context.colors.primaryBlue,
-                    ),
-                    child: Text(
-                      "4.6",
-                      style: TextStyle(
-                        color: context.colors.white,
-                        fontFamily: "GilroyBold",
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-          ),
+          const Divider(),
+          FlightTile(
+              companyName: "Aurora",
+              companyImage: kImages[0],
+              baggage: 20,
+              handBaggage: 8,
+              leftTownCode: "ALA",
+              leftTownName: "Almaty",
+              leftTime: TimeOfDay(hour: 6, minute: 15),
+              leftDate: DateTime(2024, 1, 19),
+              rightTownCode: "AYT",
+              rightTownName: "Antalya",
+              rightTime: TimeOfDay(hour: 10, minute: 15),
+              rightDate: DateTime(2024, 1, 19),
+              durationTime: "5 ч 10 мин"),
+          FlightTile(
+              reverse: true,
+              companyName: "Aurora",
+              companyImage: kImages[0],
+              baggage: 20,
+              handBaggage: 8,
+              leftTownCode: "ALA",
+              leftTownName: "Almaty",
+              leftTime: TimeOfDay(hour: 9, minute: 15),
+              leftDate: DateTime(2024, 1, 19),
+              rightTownCode: "AYT",
+              rightTownName: "Antalya",
+              rightTime: TimeOfDay(hour: 6, minute: 15),
+              rightDate: DateTime(2024, 1, 19),
+              durationTime: "5 ч 10 мин"),
         ],
       ),
     );
   }
 
-  Row buildStars() {
-    return Row(
-      children: List.generate(
-        5,
-        (index) => Icon(
-          Icons.star,
-          size: 15,
-          color:
-              index > 2 ? context.colors.gray60 : context.colors.primaryYellow,
-        ),
-      ),
-    );
-  }
-
-  Widget buildCarouselImg() {
-    return Stack(
-      alignment: Alignment.center,
-      children: [
-        CarouselSlider(
-          items: images
-              .map((e) => Image.asset(
-                    e,
-                    fit: BoxFit.cover,
-                  ))
-              .toList(),
-          options: CarouselOptions(
-            height: 285,
-            viewportFraction: 1,
-            onPageChanged: (index, reason) {
-              setState(() {
-                _currentImgIndex = index;
-              });
-            },
+  Widget buildChooseRoom(BuildContext context) {
+    return buildColoredBox(
+      context,
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Expanded(
+                child: buildListItem(context,
+                    iconData: Icons.bed_outlined,
+                    title: "Номер",
+                    subtitle: "Deluxe Room with Ga Deluxe Room with Ga..."),
+              ),
+              DDimens.smallPadding.horizontalBox,
+              PrimaryButton(
+                text: "Выбрать другой",
+                textStyle: context.textTheme.bodySmall,
+                edgeInsets: DDimens.biggerPadding.horizontal,
+                onTap: () {},
+              )
+            ],
           ),
-        ),
-        Positioned(
-          left: DDimens.largePadding,
-          top: 0,
-          child: SafeArea(
-            child: IconButton(
-              onPressed: () {},
-              icon: Icon(
-                Icons.arrow_back_ios,
-                color: context.colors.white,
+          DDimens.mediumPadding.verticalBox,
+          ClipRRect(
+            borderRadius: const BorderRadius.only(
+              bottomLeft: Radius.circular(DDimens.biggerRadius),
+              bottomRight: Radius.circular(
+                DDimens.biggerRadius,
               ),
             ),
-          ),
-        ),
-        buildIndicator(),
-      ],
+            child: SizedBox(
+              height: 140,
+              width: double.infinity,
+              child: Image.asset(
+                kImages[0],
+                fit: BoxFit.cover,
+              ),
+            ),
+          )
+        ],
+      ),
     );
   }
 
-  Positioned buildIndicator() {
-    return Positioned(
-      bottom: DDimens.bigPadding,
-      child: Container(
-        padding: DDimens.smallPadding.all,
-        decoration: BoxDecoration(
-            color: context.colors.black.withOpacity(.4),
-            borderRadius: DDimens.mediumRadius.radius),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: images.map((image) {
-            final isCurrent = _currentImgIndex == images.indexOf(image);
-            return Container(
-              width: isCurrent ? 8.0 : 6,
-              height: isCurrent ? 8.0 : 6,
-              margin: const EdgeInsets.symmetric(horizontal: 2.0),
-              decoration: BoxDecoration(
-                  shape: BoxShape.circle,
-                  color: (Theme.of(context).brightness == Brightness.dark
-                          ? Colors.black
-                          : Colors.white)
-                      .withOpacity(isCurrent ? 0.9 : 0.4)),
-            );
-          }).toList(),
+  Widget buildServices(BuildContext context) {
+    return buildColoredBox(
+      context,
+      child: Column(
+        children: [
+          DDimens.bigPadding.verticalBox,
+          buildListItem(
+            context,
+            iconData: Icons.food_bank_outlined,
+            title: "Питание",
+            subtitle: "Ультра всё включено",
+          ),
+          const Divider(),
+          buildListItem(
+            context,
+            iconData: Icons.directions_bus_outlined,
+            title: "Групповой трансфер",
+            subtitle: "Аэропорт - Отель - Аэропорт",
+          ),
+          const Divider(),
+          buildListItem(
+            context,
+            iconData: Icons.shield_outlined,
+            title: "Медицинская страховка",
+            subtitle: "Без экстремальных видов спорта",
+          ),
+          const Divider(),
+          buildListItem(
+            context,
+            iconData: Icons.person_pin_outlined,
+            title: "Сопровождение менеджера",
+            subtitle: "Круглосуточная помощь в мессенджерах",
+          ),
+          DDimens.bigPadding.verticalBox,
+        ],
+      ),
+    );
+  }
+
+  Widget buildPriceCard(BuildContext context) {
+    return buildColoredBox(
+      context,
+      child: Column(
+        children: [
+          Padding(
+            padding: DDimens.bigPadding.all,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Column(
+                  children: [
+                    Text(
+                      "1 895 061 ₸",
+                      style: context.textTheme.titleLarge!.copyWith(
+                        fontFamily: gilroyBold,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    DDimens.smallPadding.verticalBox,
+                    PrimaryColoredBox(
+                      child: Text.rich(
+                        TextSpan(text: "70 045 ₸ ", children: [
+                          TextSpan(
+                              text: "x24 мес",
+                              style: context.textTheme.bodySmall!.copyWith(
+                                color: context.colors.white,
+                              ))
+                        ]),
+                        style: context.textTheme.titleSmall!.copyWith(
+                          color: context.colors.white,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                PrimaryColoredBox(
+                  backgroundColor: context.colors.primaryRed,
+                  child: Text(
+                    "-18%",
+                    style: context.textTheme.titleSmall!.copyWith(
+                      fontFamily: gilroyBold,
+                      color: context.colors.white,
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          buildCashBack(context)
+        ],
+      ),
+    );
+  }
+
+  Container buildCashBack(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color(0xFF98FFA9),
+              Color(0xFFB4FFE9),
+            ],
+          ),
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(DDimens.biggerRadius),
+            bottomRight: Radius.circular(DDimens.biggerRadius),
+          )),
+      child: ListTile(
+        title: Text(
+          "27 911 тнг.",
+          style: context.textTheme.titleMediumPlus!.copyWith(
+            fontFamily: gilroyBold,
+            fontWeight: FontWeight.bold,
+            color: context.colors.primaryGreen,
+          ),
+        ),
+        subtitle: Text(
+          "Кэшбэк на бонусный счёт",
+          style: TextStyle(
+            color: context.colors.secondaryGreen,
+          ),
+        ),
+        trailing: Icon(
+          Icons.keyboard_arrow_right,
+          color: context.colors.primaryGreen,
         ),
       ),
+    );
+  }
+
+  Widget buildListItem(
+    BuildContext context, {
+    required IconData iconData,
+    required String title,
+    required String subtitle,
+  }) {
+    return Padding(
+      padding: DDimens.bigPadding.horizontal,
+      child: Row(
+        children: [
+          Icon(
+            iconData,
+            color: context.colors.gray20,
+          ),
+          DDimens.bigPadding.horizontalBox,
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(title),
+                Text(
+                  subtitle,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: context.textTheme.bodySmall!.copyWith(
+                    color: context.colors.gray20,
+                  ),
+                ),
+              ],
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  Widget buildColoredBox(BuildContext context,
+      {EdgeInsets? padding, required Widget child, bool isBorder = true}) {
+    return Container(
+      padding: padding,
+      decoration: BoxDecoration(
+        borderRadius: DDimens.biggerRadius.radius,
+        color: context.colors.gray80,
+        border: isBorder
+            ? Border.all(
+                color: context.colors.gray60,
+              )
+            : null,
+      ),
+      child: child,
     );
   }
 }

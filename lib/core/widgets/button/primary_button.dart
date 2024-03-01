@@ -46,15 +46,12 @@ class PrimaryButton extends StatelessWidget {
         width: width,
         height: height,
         child: ElevatedButton(
-          
           style: ElevatedButton.styleFrom(
-            
             elevation: elevation,
-            padding: edgeInsets??DDimens.biggerPadding.vertical,
-            foregroundColor:foregroundColor?? context.colors.white,
-            textStyle:textStyle?? context.textTheme.titleMedium,
-            backgroundColor:
-                backgroundColor ?? context.colors.primaryGreen,
+            padding: edgeInsets ?? DDimens.biggerPadding.vertical,
+            foregroundColor: foregroundColor ?? context.colors.white,
+            textStyle: textStyle ?? context.textTheme.titleMedium,
+            backgroundColor: backgroundColor ?? context.colors.primaryGreen,
             shape: RoundedRectangleBorder(
               borderRadius:
                   borderRadius ?? BorderRadius.circular(DDimens.bigRadius),
@@ -68,7 +65,6 @@ class PrimaryButton extends StatelessWidget {
               icon ?? SizedBox(),
               Text(
                 text,
-               
               ),
             ],
           ),

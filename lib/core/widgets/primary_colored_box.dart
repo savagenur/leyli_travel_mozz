@@ -14,7 +14,10 @@ class PrimaryColoredBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: DDimens.smallPadding.all,
+      padding: const EdgeInsets.symmetric(
+        horizontal: DDimens.mediumPadding,
+        vertical: DDimens.littlePadding,
+      ) ,
       decoration: BoxDecoration(
         color: backgroundColor ?? context.colors.primaryYellow,
         borderRadius: DDimens.smallRadius.radius,

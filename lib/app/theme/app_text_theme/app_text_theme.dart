@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppTextTheme {
   static const TextTheme lightTextTheme = TextTheme(
+    
     displayLarge: null, // 57
     displayMedium: null, // 45
     displaySmall: null, // 36
