@@ -10,6 +10,7 @@ import 'package:leyli_travel_mozz/views/calendar.dart';
 import 'package:leyli_travel_mozz/views/choose_seat/choose_seat_page.dart';
 import 'package:leyli_travel_mozz/views/main_page/main_page.dart';
 import 'package:leyli_travel_mozz/views/main_page/search_tour/search_tour_page.dart';
+import 'package:leyli_travel_mozz/views/payment/payment_page.dart';
 import 'package:leyli_travel_mozz/views/tour_detail/tour_detail_page.dart';
 import 'package:leyli_travel_mozz/views/tour_info/tour_info_page.dart';
 import 'package:leyli_travel_mozz/views/tour_list/tour_list_page.dart';
@@ -32,7 +33,7 @@ class LeyliTravelApp extends StatelessWidget {
       ],
       supportedLocales: L10n.all,
       locale: const Locale("ru"),
-      home: ChooseSeatPage(),
+      home: PaymentPage(),
     );
   }
 
@@ -55,15 +56,16 @@ class LeyliTravelApp extends StatelessWidget {
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: appColorsLight.white,
-          contentPadding: EdgeInsets.symmetric(
+          contentPadding: const EdgeInsets.symmetric(
             vertical: DDimens.biggerPadding,
             horizontal: DDimens.largePadding,
           ),
           suffixStyle: TextStyle(color: appColorsLight.black),
           focusedBorder: OutlineInputBorder(
             borderRadius: DDimens.bigRadius.radius,
-            borderSide: BorderSide(
+            borderSide:  BorderSide(
               width: 1.5,
+              color: appColorsLight.primaryGreen,
             ),
             gapPadding: DDimens.smallPadding,
           ),

@@ -32,6 +32,7 @@ class PrimaryTextFormField extends StatelessWidget {
     this.isFilled = true,
     this.initialText,
     this.labelText,
+    this.textAlign=TextAlign.start,
     this.onEditingComplete,
     this.paddingTextFormFiled = EdgeInsets.zero,
     this.inputFormatters,
@@ -60,6 +61,7 @@ class PrimaryTextFormField extends StatelessWidget {
   final bool readOnly;
   final List<TextInputFormatter>? inputFormatters;
   final bool isRequired;
+  final TextAlign textAlign;
   final double? textFormFieldHeight;
   final EdgeInsets? contentPadding;
   final bool isFilled;
@@ -91,14 +93,16 @@ class PrimaryTextFormField extends StatelessWidget {
       onTap: onTap,
       keyboardType: textInputType,
       controller: controller,
+      textAlign: textAlign,
       decoration: InputDecoration(
+        
         floatingLabelBehavior: floatingLabelBehavior,
         suffixText: suffixText,
         suffixIconColor: suffixIconColor,
         hintText: hintText,
         filled: isFilled,
         labelText: labelText,
-        fillColor: isFilled ? context.colors.white : context.colors.white,
+        fillColor: isFilled ? context.colors.white : Colors.transparent,
         suffixIcon: suffixIcon,
         suffix: suffix,
         prefixIcon: prefixIcon,
