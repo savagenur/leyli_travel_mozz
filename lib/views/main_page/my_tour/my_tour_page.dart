@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
@@ -6,6 +7,7 @@ import 'package:leyli_travel_mozz/core/widgets/appbar/adaptive_app_bar.dart';
 import 'package:leyli_travel_mozz/core/widgets/colored_box/small_colored_box.dart';
 import 'package:leyli_travel_mozz/core/widgets/primary_image_text.dart';
 
+@RoutePage()
 class MyTourPage extends StatelessWidget {
   const MyTourPage({super.key});
 

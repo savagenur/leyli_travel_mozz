@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
@@ -8,6 +9,7 @@ import 'package:leyli_travel_mozz/core/widgets/button/primary_button.dart';
 import 'package:leyli_travel_mozz/core/widgets/colored_box/main_colored_box.dart';
 import 'package:leyli_travel_mozz/views/choose_seat/widgets/bus_seats.dart';
 
+@RoutePage()
 class ChooseSeatPage extends StatefulWidget {
   const ChooseSeatPage({super.key});
 
@@ -169,7 +171,10 @@ class ChooseSeatPageState extends State<ChooseSeatPage> {
   Widget buildDoneBtn() {
     return PrimaryButton(
       text: "Готово",
-      onTap: () {},
+      onTap: () {
+                context.popRoute();
+
+      },
     );
   }
 }

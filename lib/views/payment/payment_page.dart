@@ -7,7 +7,9 @@ import 'package:leyli_travel_mozz/core/widgets/appbar/adaptive_app_bar.dart';
 import 'package:leyli_travel_mozz/core/widgets/button/primary_button.dart';
 import 'package:leyli_travel_mozz/core/widgets/colored_box/main_colored_box.dart';
 import 'package:leyli_travel_mozz/core/widgets/input/text/primary_text_form_field.dart';
+import 'package:auto_route/auto_route.dart';
 
+@RoutePage()
 class PaymentPage extends StatefulWidget {
   const PaymentPage({super.key});
 

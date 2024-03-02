@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
+import 'package:leyli_travel_mozz/app/router/app_router.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
 import 'package:leyli_travel_mozz/core/constants/constants.dart';
+import 'package:leyli_travel_mozz/core/enum/road_enum.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
 import 'package:leyli_travel_mozz/core/mocks/images.dart';
 import 'package:leyli_travel_mozz/core/widgets/appbar/adaptive_app_bar.dart';
@@ -11,7 +14,9 @@ import 'package:leyli_travel_mozz/core/widgets/colored_box/main_colored_box.dart
 import 'package:leyli_travel_mozz/core/widgets/colored_box/small_colored_box.dart';
 import 'package:leyli_travel_mozz/core/widgets/rating_stars.dart';
 import 'package:leyli_travel_mozz/core/widgets/tour_card_title.dart';
+import 'package:auto_route/auto_route.dart';
 
+@RoutePage()
 class TourDetailPage extends StatelessWidget {
   const TourDetailPage({super.key});
 
@@ -47,8 +52,10 @@ class TourDetailPage extends StatelessWidget {
             DDimens.hugePadding.verticalBox,
             PrimaryButton(
               margin: DDimens.largePadding.horizontal,
-              text: "Формить тур (1 642 846 тнг.)",
-              onTap: () {},
+              text: "Оформить тур (1 642 846 тнг.)",
+              onTap: () {
+                context.pushRoute(TourRegistrationRoute());
+              },
             ),
             DDimens.doubleHugePadding.verticalBox,
           ],

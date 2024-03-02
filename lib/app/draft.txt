@@ -1,0 +1,172 @@
+import 'package:flutter/material.dart';
+
+import 'package:leyli_travel_mozz/core/enum/road_enum.dart';
+import 'package:leyli_travel_mozz/core/enum/seat_status.dart';
+import 'package:leyli_travel_mozz/views/main_page/main_page.dart';
+import 'package:leyli_travel_mozz/views/choose_seat/choose_seat_page.dart';
+import 'package:leyli_travel_mozz/views/connect_with_us/connect_with_us_page.dart';
+import 'package:leyli_travel_mozz/views/main_page/main_page.dart';
+import 'package:leyli_travel_mozz/views/main_page/my_tour/my_tour_page.dart';
+import 'package:leyli_travel_mozz/views/main_page/notification/notification_page.dart';
+import 'package:leyli_travel_mozz/views/main_page/profile/profile_page.dart';
+import 'package:leyli_travel_mozz/views/main_page/search_tour/search_tour_page.dart';
+import 'package:leyli_travel_mozz/views/payment/payment_page.dart';
+import 'package:leyli_travel_mozz/views/sign_in/sign_in_page.dart';
+import 'package:leyli_travel_mozz/views/tour_detail/tour_detail_page.dart';
+import 'package:leyli_travel_mozz/views/tour_info/tour_info_page.dart';
+import 'package:leyli_travel_mozz/views/tour_list/tour_list_page.dart';
+import 'package:leyli_travel_mozz/views/tour_registration/tour_registration_page.dart';
+
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> _mainPageNavigatorKey =
+    GlobalKey<NavigatorState>();
+final GlobalKey<NavigatorState> _tourInfoKey = GlobalKey<NavigatorState>();
+
+class AppRouter {
+  static final router = GoRouter(
+    initialLocation: RoadEnum.searchTour.path,
+    navigatorKey: _rootNavigatorKey,
+    routes: [
+      StatefulShellRoute.indexedStack(
+        builder: (
+          BuildContext context,
+          GoRouterState state,
+          StatefulNavigationShell navigationShell,
+        ) {
+          return MainPage(navigationShell: navigationShell);
+        },
+        branches: <StatefulShellBranch>[
+          searchTourBranch(),
+          myTourBranch(),
+          notificationBranch(),
+          profileBranch(),
+        ],
+      ),
+      GoRoute(
+        path: RoadEnum.signIn.path,
+        name: RoadEnum.signIn.name,
+        builder: (context, state) {
+          return SignInPage();
+        },
+      )
+    ],
+  );
+
+  static StatefulShellBranch profileBranch() {
+    return StatefulShellBranch(
+      routes: <RouteBase>[
+        GoRoute(
+          path: RoadEnum.profile.path,
+          name: RoadEnum.profile.name,
+          builder: (context, state) {
+            return ProfilePage();
+          },
+        ),
+      ],
+    );
+  }
+
+  static StatefulShellBranch notificationBranch() {
+    return StatefulShellBranch(
+      routes: <RouteBase>[
+        GoRoute(
+          path: RoadEnum.notification.path,
+          name: RoadEnum.notification.name,
+          builder: (context, state) {
+            return NotificationPage();
+          },
+        ),
+      ],
+    );
+  }
+
+  static StatefulShellBranch myTourBranch() {
+    return StatefulShellBranch(
+      routes: <RouteBase>[
+        GoRoute(
+            path: RoadEnum.myTour.path,
+            name: RoadEnum.myTour.name,
+            builder: (context, state) {
+              return MyTourPage();
+            },
+            routes: []),
+      ],
+    );
+  }
+
+  static StatefulShellBranch searchTourBranch() {
+    return StatefulShellBranch(
+      navigatorKey: _mainPageNavigatorKey,
+      routes: <RouteBase>[
+        GoRoute(
+            path: RoadEnum.searchTour.path,
+            name: RoadEnum.searchTour.name,
+            builder: (context, state) {
+              return SearchTourPage();
+            },
+            routes: [
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: RoadEnum.tourList.path,
+                name: RoadEnum.tourList.name,
+                builder: (context, state) {
+                   String args = state.extra as String;
+                  return TourListPage(
+                    title: args,
+                  );
+                },
+                routes: [
+                  GoRoute(
+                    parentNavigatorKey: _rootNavigatorKey,
+                    path: RoadEnum.tourInfo.path,
+                    name: RoadEnum.tourInfo.name,
+                    builder: (context, state) {
+                      return TourInfoPage();
+                    },
+                    routes: [
+                      GoRoute(
+                          parentNavigatorKey: _rootNavigatorKey,
+                          path: RoadEnum.tourDetail.path,
+                          name: RoadEnum.tourDetail.name,
+                          builder: (context, state) {
+                            return TourDetailPage();
+                          },
+                          routes: [
+                            GoRoute(
+                              parentNavigatorKey: _rootNavigatorKey,
+                              path: RoadEnum.tourRegistration.path,
+                              name: RoadEnum.tourRegistration.name,
+                              builder: (context, state) {
+                                return TourRegistrationPage();
+                              },
+                              routes: [
+                                GoRoute(
+                                  parentNavigatorKey: _rootNavigatorKey,
+                                  path: RoadEnum.chooseSeat.path,
+                                  name: RoadEnum.chooseSeat.name,
+                                  builder: (context, state) {
+                                    return ChooseSeatPage();
+                                  },
+                                  routes: [],
+                                ),
+                                GoRoute(
+                                  parentNavigatorKey: _rootNavigatorKey,
+                                  path: RoadEnum.payment.path,
+                                  name: RoadEnum.payment.name,
+                                  builder: (context, state) {
+                                    return PaymentPage();
+                                  },
+                                  routes: [],
+                                )
+                              ],
+                            ),
+                          ])
+                    ],
+                  )
+                ],
+              ),
+            ]),
+      ],
+    );
+  }
+}

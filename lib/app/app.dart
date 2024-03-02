@@ -3,26 +3,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:leyli_travel_mozz/app/colors/app_colors.dart';
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
+import 'package:leyli_travel_mozz/app/router/app_router.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
+import 'package:leyli_travel_mozz/injection_container.dart';
 import 'package:leyli_travel_mozz/l10n/l10n.dart';
-import 'package:leyli_travel_mozz/views/calendar.dart';
-import 'package:leyli_travel_mozz/views/choose_seat/choose_seat_page.dart';
-import 'package:leyli_travel_mozz/views/main_page/main_page.dart';
-import 'package:leyli_travel_mozz/views/main_page/search_tour/search_tour_page.dart';
-import 'package:leyli_travel_mozz/views/payment/payment_page.dart';
-import 'package:leyli_travel_mozz/views/sign_in/sign_in_page.dart';
-import 'package:leyli_travel_mozz/views/tour_detail/tour_detail_page.dart';
-import 'package:leyli_travel_mozz/views/tour_info/tour_info_page.dart';
-import 'package:leyli_travel_mozz/views/tour_list/tour_list_page.dart';
-import 'package:leyli_travel_mozz/views/tour_registration/tour_registration_page.dart';
 
 class LeyliTravelApp extends StatelessWidget {
   const LeyliTravelApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    final appRouter = sl<AppRouter>();
+    return MaterialApp.router(
+      routerConfig: appRouter.config(),
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: theme(context),
@@ -34,7 +28,6 @@ class LeyliTravelApp extends StatelessWidget {
       ],
       supportedLocales: L10n.all,
       locale: const Locale("ru"),
-      home: SignInPage(),
     );
   }
 
@@ -64,7 +57,7 @@ class LeyliTravelApp extends StatelessWidget {
           suffixStyle: TextStyle(color: appColorsLight.black),
           focusedBorder: OutlineInputBorder(
             borderRadius: DDimens.bigRadius.radius,
-            borderSide:  BorderSide(
+            borderSide: BorderSide(
               width: 1.5,
               color: appColorsLight.primaryGreen,
             ),

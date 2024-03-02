@@ -1,8 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:calendar_date_picker2/calendar_date_picker2.dart';
 import 'package:flutter/material.dart';
+
 import 'package:intl/intl.dart';
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
+import 'package:leyli_travel_mozz/app/router/app_router.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
+import 'package:leyli_travel_mozz/core/enum/road_enum.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
 import 'package:leyli_travel_mozz/core/mocks/towns.dart';
 import 'package:leyli_travel_mozz/core/widgets/button/primary_button.dart';
@@ -10,12 +14,14 @@ import 'package:leyli_travel_mozz/core/widgets/input/dropdown/primary_dropdown_f
 import 'package:leyli_travel_mozz/core/widgets/input/text/primary_text_form_field.dart';
 import 'package:leyli_travel_mozz/core/widgets/line/dashed_line.dart';
 import 'package:leyli_travel_mozz/core/widgets/line/vertical_dashed_line.dart';
+import 'package:leyli_travel_mozz/views/tour_list/tour_list_page.dart';
 
 enum TravelType {
   abroad,
   aroundTheCountry;
 }
 
+@RoutePage()
 class SearchTourPage extends StatefulWidget {
   const SearchTourPage({super.key});
 
@@ -132,7 +138,13 @@ class SearchTourPageState extends State<SearchTourPage> {
         DDimens.largePadding.verticalBox,
         PrimaryButton(
           text: "Найти туры",
-          onTap: () {},
+          onTap: () {
+            context.pushRoute(
+              TourListRoute(
+                title: "Анталия-Алматы",
+              ),
+            );
+          },
           margin: DDimens.largePadding.horizontal,
         ),
         DDimens.bigPadding.verticalBox,
@@ -177,7 +189,13 @@ class SearchTourPageState extends State<SearchTourPage> {
         DDimens.largePadding.verticalBox,
         PrimaryButton(
           text: "Найти туры",
-          onTap: () {},
+          onTap: () {
+            context.pushRoute(
+              TourListRoute(
+                title: "Анталия-Алматы",
+              ),
+            );
+          },
           margin: DDimens.largePadding.horizontal,
         ),
         DDimens.bigPadding.verticalBox,

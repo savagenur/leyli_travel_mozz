@@ -1,19 +1,18 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
+import 'package:leyli_travel_mozz/app/router/app_router.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
 import 'package:leyli_travel_mozz/core/constants/constants.dart';
+import 'package:leyli_travel_mozz/core/enum/like_type.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
 import 'package:leyli_travel_mozz/core/mocks/images.dart';
 import 'package:leyli_travel_mozz/core/widgets/button/primary_button.dart';
 import 'package:leyli_travel_mozz/core/widgets/rating_stars.dart';
 
-enum LikeType {
-  like,
-  dislike;
-}
-
+@RoutePage()
 class TourInfoPage extends StatefulWidget {
   const TourInfoPage({super.key});
 
@@ -70,11 +69,7 @@ class TourInfoPageState extends State<TourInfoPage> {
                   DDimens.hugePadding.verticalBox,
                   buildSuggestion(),
                   DDimens.hugePadding.verticalBox,
-                  PrimaryButton(
-                    margin: DDimens.hugePadding.horizontal,
-                    text: "Подать заявку",
-                    onTap: () {},
-                  ),
+                  buildApplyBtn(),
                 ],
               ),
             ),
@@ -82,6 +77,16 @@ class TourInfoPageState extends State<TourInfoPage> {
           ],
         ),
       ),
+    );
+  }
+
+  PrimaryButton buildApplyBtn() {
+    return PrimaryButton(
+      margin: DDimens.hugePadding.horizontal,
+      text: "Подать заявку",
+      onTap: () {
+        context.pushRoute(TourDetailRoute());
+      },
     );
   }
 
@@ -341,7 +346,9 @@ class TourInfoPageState extends State<TourInfoPage> {
           top: 0,
           child: SafeArea(
             child: IconButton(
-              onPressed: () {},
+              onPressed: () {
+                context.router.pop();
+              },
               icon: Icon(
                 Icons.arrow_back_ios,
                 color: context.colors.white,

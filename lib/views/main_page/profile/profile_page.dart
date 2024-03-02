@@ -1,9 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
+import 'package:leyli_travel_mozz/app/router/app_router.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
 import 'package:leyli_travel_mozz/core/widgets/appbar/adaptive_app_bar.dart';
 
+@RoutePage()
 class ProfilePage extends StatelessWidget {
   const ProfilePage({super.key});
 
@@ -30,7 +33,7 @@ class ProfilePage extends StatelessWidget {
             DDimens.largePadding.verticalBox,
             _buildAds(context, isAuthenticated),
             DDimens.largePadding.verticalBox,
-            buildContactWithUs(),
+            buildContactWithUs(context),
             DDimens.largePadding.verticalBox,
           if(isAuthenticated)  buildSignOut(),
           ],
@@ -62,9 +65,12 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  ListTile buildContactWithUs() {
+  ListTile buildContactWithUs(BuildContext context) {
     return ListTile(
-      onTap: () {},
+      onTap: () {
+                context.pushRoute((ConnectWithUsRoute()));
+
+      },
       leading: Icon(
         Icons.mail_outline_outlined,
       ),

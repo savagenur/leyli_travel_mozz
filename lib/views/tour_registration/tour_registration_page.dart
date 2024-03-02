@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+
 import 'package:leyli_travel_mozz/app/dimension/design_dimension.dart';
+import 'package:leyli_travel_mozz/app/router/app_router.dart';
 import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
 import 'package:leyli_travel_mozz/core/constants/constants.dart';
+import 'package:leyli_travel_mozz/core/enum/road_enum.dart';
 import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
 import 'package:leyli_travel_mozz/core/mocks/images.dart';
 import 'package:leyli_travel_mozz/core/widgets/appbar/adaptive_app_bar.dart';
@@ -10,7 +13,9 @@ import 'package:leyli_travel_mozz/core/widgets/colored_box/main_colored_box.dart
 import 'package:leyli_travel_mozz/core/widgets/flight_tile.dart';
 import 'package:leyli_travel_mozz/core/widgets/input/text/primary_text_form_field.dart';
 import 'package:leyli_travel_mozz/core/widgets/tour_card_title.dart';
+import 'package:auto_route/auto_route.dart';
 
+@RoutePage()
 class TourRegistrationPage extends StatelessWidget {
   const TourRegistrationPage({super.key});
 
@@ -55,54 +60,56 @@ class TourRegistrationPage extends StatelessWidget {
 
   MainColoredBox buildHotel() {
     return MainColoredBox(
-            isBorder: false,
-            padding: DDimens.bigPadding.all,
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                CircleAvatar(
-                  radius: 45,
-                  foregroundImage: AssetImage(
-                    kImages[0],
-                  ),
-                ),
-                DDimens.bigPadding.horizontalBox,
-                TourCardTitle(),
-              ],
+      isBorder: false,
+      padding: DDimens.bigPadding.all,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          CircleAvatar(
+            radius: 45,
+            foregroundImage: AssetImage(
+              kImages[0],
             ),
-          );
+          ),
+          DDimens.bigPadding.horizontalBox,
+          TourCardTitle(),
+        ],
+      ),
+    );
   }
 
   Padding buildBookTourBtn(BuildContext context) {
     return Padding(
-            padding: DDimens.largePadding.horizontal,
-            child: Column(
+      padding: DDimens.largePadding.horizontal,
+      child: Column(
+        children: [
+          Padding(
+            padding: DDimens.biggerPadding.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.end,
               children: [
-                Padding(
-                  padding: DDimens.biggerPadding.horizontal,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      Text("Итого"),
-                      Text("-"),
-                      Text(
-                        "1 642 846 тнг.",
-                        style: context.textTheme.titleLarge!.copyWith(
-                          fontFamily: semiBold,
-                        ),
-                      ),
-                    ],
+                Text("Итого"),
+                Text("-"),
+                Text(
+                  "1 642 846 тнг.",
+                  style: context.textTheme.titleLarge!.copyWith(
+                    fontFamily: semiBold,
                   ),
                 ),
-                DDimens.bigPadding.verticalBox,
-                PrimaryButton(
-                  text: "Забронировать тур",
-                  onTap: () {},
-                )
               ],
             ),
-          );
+          ),
+          DDimens.bigPadding.verticalBox,
+          PrimaryButton(
+            text: "Забронировать тур",
+            onTap: () {
+              context.pushRoute(PaymentRoute());
+            },
+          )
+        ],
+      ),
+    );
   }
 
   TextField buildNoteTextField(BuildContext context) {
@@ -142,12 +149,7 @@ class TourRegistrationPage extends StatelessWidget {
                   ),
                 ),
                 Expanded(
-                  child: PrimaryButton(
-                    text: "Выбрать",
-                    textStyle: context.textTheme.bodySmall,
-                    edgeInsets: DDimens.largePadding.horizontal,
-                    onTap: () {},
-                  ),
+                  child: buildChooseSeatBtn(context),
                 ),
               ],
             ),
@@ -173,6 +175,18 @@ class TourRegistrationPage extends StatelessWidget {
           DDimens.biggerPadding.verticalBox,
         ],
       ),
+    );
+  }
+
+  PrimaryButton buildChooseSeatBtn(BuildContext context) {
+    return PrimaryButton(
+      text: "Выбрать",
+      textStyle: context.textTheme.bodySmall,
+      edgeInsets: DDimens.largePadding.horizontal,
+      onTap: () {
+                context.pushRoute(ChooseSeatRoute());
+
+      },
     );
   }
 
@@ -209,10 +223,7 @@ class TourRegistrationPage extends StatelessWidget {
   Widget buildTouristDoc(BuildContext context) {
     return Padding(
       padding: DDimens.bigPadding.horizontal,
-      
       child: Material(
-        
-        
         child: ListTile(
           tileColor: context.colors.gray60,
           onTap: () {},
