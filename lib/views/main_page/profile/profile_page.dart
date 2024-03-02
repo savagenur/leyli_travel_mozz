@@ -9,13 +9,14 @@ class ProfilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    bool isAuthenticated = false;
     return Scaffold(
       appBar: AdaptiveAppBar(
         text: "Профиль",
         actions: [
           IconButton(
             onPressed: () {},
-            icon: Icon(
+            icon: const Icon(
               Icons.message_outlined,
             ),
           ),
@@ -25,13 +26,13 @@ class ProfilePage extends StatelessWidget {
         padding: DDimens.largePadding.all,
         child: Column(
           children: [
-            _buildProfileInfo(context),
+            isAuthenticated ? _buildProfileInfo(context) : buildSignIn(),
             DDimens.largePadding.verticalBox,
-            _buildAds(context),
+            _buildAds(context, isAuthenticated),
             DDimens.largePadding.verticalBox,
             buildContactWithUs(),
             DDimens.largePadding.verticalBox,
-            buildSignOut(),
+          if(isAuthenticated)  buildSignOut(),
           ],
         ),
       ),
@@ -41,10 +42,23 @@ class ProfilePage extends StatelessWidget {
   ListTile buildSignOut() {
     return ListTile(
       onTap: () {},
-      leading: Icon(
+      leading: const Icon(
         Icons.logout,
       ),
       title: Text("Выйти/Удалить аккаунт"),
+    );
+  }
+
+  ListTile buildSignIn() {
+    return ListTile(
+      onTap: () {},
+      leading: const Icon(
+        Icons.person_outline,
+      ),
+      title: Text("Войти/Зарегистрироваться"),
+      trailing: const Icon(
+        Icons.keyboard_arrow_right_outlined,
+      ),
     );
   }
 
@@ -59,53 +73,66 @@ class ProfilePage extends StatelessWidget {
     );
   }
 
-  Container _buildAds(BuildContext context) {
-    return Container(
-      padding: DDimens.biggerPadding.all,
-      decoration: BoxDecoration(
-        gradient: LinearGradient(colors: [
-          Color(0xFF98FFA9),
-          Color(0xFFB4FFE9),
-        ]),
-        borderRadius: DDimens.biggerRadius.radius,
-      ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget _buildAds(BuildContext context, bool isAuthenticated) {
+    return Stack(
+      children: [
+        Container(
+          padding: DDimens.biggerPadding.all,
+          decoration: BoxDecoration(
+            gradient: const LinearGradient(colors: [
+              Color(0xFF98FFA9),
+              Color(0xFFB4FFE9),
+            ]),
+            borderRadius: DDimens.biggerRadius.radius,
+          ),
+          child: Column(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    "Доступные бонусы",
-                    style: TextStyle(
-                      color: Color(0xFF40B0A3),
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Доступные бонусы",
+                        style: TextStyle(
+                          color: Color(0xFF40B0A3),
+                        ),
+                      ),
+                      Text(
+                       isAuthenticated? "25 172 тнг.":"0 тнг.",
+                        style: context.textTheme.headlineMedium!.copyWith(
+                          fontWeight: FontWeight.w700,
+                          color: context.colors.primaryGreen,
+                        ),
+                      ),
+                    ],
                   ),
-                  Text(
-                    "25 172 тнг.",
-                    style: context.textTheme.headlineMedium!.copyWith(
-                      fontWeight: FontWeight.w700,
-                      color: context.colors.primaryGreen,
-                    ),
-                  ),
+                  Icon(
+                    Icons.percent,
+                    color: context.colors.primaryGreen,
+                  )
                 ],
               ),
-              Icon(
-                Icons.percent,
-                color: context.colors.primaryGreen,
-              )
+              Text(
+                "Получайте кэшбек за покупку туров и используйте бонусы для следующих поездок!",
+                style: context.textTheme.bodySmall!.copyWith(
+                  color: context.colors.primaryGreen,
+                ),
+              ),
             ],
           ),
-          Text(
-            "Получайте кэшбек за покупку туров и используйте бонусы для следующих поездок!",
-            style: context.textTheme.bodySmall!.copyWith(
-              color: context.colors.primaryGreen,
-            ),
+        ),
+      if(!isAuthenticated)  Positioned(
+          top: 0,
+          right: 0,
+          left: 0,
+          bottom: 0,
+          child: Container(
+            color: Colors.white.withOpacity(.4),
           ),
-        ],
-      ),
+        )
+      ],
     );
   }
 

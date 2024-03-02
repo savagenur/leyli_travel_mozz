@@ -41,7 +41,7 @@ class AppTextTheme {
 
 extension ToTextStyle on TextTheme {
    TextStyle? get titleMediumPlus => TextStyle(
-        fontSize: 20,
+        fontSize: 18,
       );
   TextStyle? get bodySmallMinus => TextStyle(
         fontSize: 9,

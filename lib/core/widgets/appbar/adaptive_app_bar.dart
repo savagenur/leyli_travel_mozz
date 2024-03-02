@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:leyli_travel_mozz/app/theme/app_text_theme/app_text_theme.dart';
+import 'package:leyli_travel_mozz/core/extension/build_context_extension.dart';
 
 class AdaptiveAppBar extends StatelessWidget implements PreferredSizeWidget {
   final List<Widget>? actions;
@@ -14,7 +16,7 @@ class AdaptiveAppBar extends StatelessWidget implements PreferredSizeWidget {
     return AppBar(
       title: Text(
         text,
-        style: TextStyle(fontSize: 18),
+        style: context.textTheme.titleMediumPlus,
       ),
       actions: actions,
     );

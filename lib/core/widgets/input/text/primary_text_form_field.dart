@@ -15,7 +15,7 @@ class PrimaryTextFormField extends StatelessWidget {
     this.suffix,
     this.suffixText,
     this.focusNode,
-    this.floatingLabelBehavior,
+    this.floatingLabelBehavior = FloatingLabelBehavior.always,
     this.onTapOutside,
     this.controller,
     this.onTap,
@@ -32,10 +32,11 @@ class PrimaryTextFormField extends StatelessWidget {
     this.isFilled = true,
     this.initialText,
     this.labelText,
-    this.textAlign=TextAlign.start,
+    this.textAlign = TextAlign.start,
     this.onEditingComplete,
     this.paddingTextFormFiled = EdgeInsets.zero,
     this.inputFormatters,
+    this.obscureText=false,
   }) : super(key: key);
 
   final String hintText;
@@ -59,6 +60,7 @@ class PrimaryTextFormField extends StatelessWidget {
   final Function(String?)? onChanged;
   final Function()? onEditingComplete;
   final bool readOnly;
+  final bool obscureText;
   final List<TextInputFormatter>? inputFormatters;
   final bool isRequired;
   final TextAlign textAlign;
@@ -94,8 +96,12 @@ class PrimaryTextFormField extends StatelessWidget {
       keyboardType: textInputType,
       controller: controller,
       textAlign: textAlign,
+      obscureText: obscureText,
       decoration: InputDecoration(
         
+        hintStyle: TextStyle(
+          color: context.colors.gray40,
+        ),
         floatingLabelBehavior: floatingLabelBehavior,
         suffixText: suffixText,
         suffixIconColor: suffixIconColor,
